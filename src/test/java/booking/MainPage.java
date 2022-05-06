@@ -1,8 +1,8 @@
+package booking;
 
 import org.openqa.selenium.*;
 
 public class MainPage extends PageBase {
-    private final By signinButton = By.xpath("//*[@id='b2indexPage']/header/nav[1]/div[2]/div[6]/a");
     private final By dropDownButton = By.xpath("//*[@id='b2indexPage']/header/nav[1]/div[2]/div[6]/div/a");
     private final By searchLocator = By.xpath("//*[@id='frm']/div[1]/div[4]/div[2]/button");
     private final By carRentals = By.xpath("//*[@id='b2indexPage']/header/nav[2]/ul/li[4]/a");
@@ -13,31 +13,14 @@ public class MainPage extends PageBase {
         this.driver.get("https://www.booking.com/index.en-gb.html");
     }
 
-    public LoginPage openSignin() {
-        try {
-            this.waitVisibiiltyAndFindElement(signinButton).click();
-        } catch (WebDriverException e) {
-            e.printStackTrace();
-        }
-        return new LoginPage(this.driver);
-    }
-
-    public LogoutPage openSignout() {
-        try {
-            this.waitVisibiiltyAndFindElement(dropDownButton).click();
-        } catch (WebDriverException e) {
-            e.printStackTrace();
-        }
-        return new LogoutPage(this.driver);
-    }
-
+  
     public SearchResultPage searchDestination(String searchQuery) {
         WebElement searchBarElement = waitVisibiiltyAndFindElement(searchLocator);
         searchBarElement.sendKeys(searchQuery + "\n");
         return new SearchResultPage(this.driver);
     }
 
-    public ProfilePage openSendForm() {
+    public ProfilePage openProfilePage() {
         try {
             this.waitVisibiiltyAndFindElement(dropDownButton).click();
         } catch (WebDriverException e) {

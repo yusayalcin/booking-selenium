@@ -1,3 +1,4 @@
+package parabank;
 
 import org.openqa.selenium.*;
 
